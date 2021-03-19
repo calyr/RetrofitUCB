@@ -24,8 +24,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                val posts = response.body()
+                val posts = response?.body()
                 Log.d("RESP POST", Gson().toJson(posts))
+                posts?.forEach {
+                    Log.d("body", it.id.toString())
+                }
             }
 
         })
